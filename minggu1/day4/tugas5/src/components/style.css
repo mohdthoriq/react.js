@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.container {
+  padding: 10px;
+}
+
+@media (min-width: 768px) { /* Untuk layar tablet dan desktop */
+  .container {
+    padding: 20px;
+  }
+}
+
+.responsiveImage {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
