@@ -1,14 +1,21 @@
+import { useState } from 'react'
+
+
 export default function ButtonClicker() {
+
+    const [error, setError] = useState('')
+
+
     const handleClick = () => {
         alert('Tombol Diklik!')
     }
 
     const handleMouseEnter = () => {
-        console.log('Tombol dienter!');  
+        setError('Tombol dienter!');  
     }
 
     const handleMouseLeave = () => {
-        console.log('Tombol Keluar!');
+        setError('Tombol Keluar!');
     }
 
     return (
@@ -22,6 +29,7 @@ export default function ButtonClicker() {
                 >
                     Klik atau Arahkan Mouse ke Saya
                 </button>
+                <p>{error}</p>
             </div>
         </>
     )
