@@ -18,20 +18,20 @@ function App() {
       <div>
         {/* tugas 1 */}
         <EffectSederhana />
-        <hr />
+        <hr className='line'/>
         <br />
         {/* tugas 2 */}
         <DataPengguna userID={currentUserId}/>
-        <button onClick={() => setCurrentUser((prevId) => prevId + 1)}>Lihat Pengguna Berikutnya</button>
-        <hr />
+        <button className='mb-4' onClick={() => setCurrentUser((prevId) => prevId + 1)}>Lihat Pengguna Berikutnya</button>
+        <hr className='line' />
         <br />
         {/* tugas 3 */}
         <WindowSize />
-        <hr />
+        <hr className='line' />
         <br />
         {/* tugas 4 */}
         <MultipleEffect />
-        <hr />
+        <hr className='line' />
         <br />
         {/* tugas 5 */}
         <FetchSimulasi userID={User} />

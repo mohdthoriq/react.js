@@ -9,7 +9,7 @@ export default function WindowSize()  {
         console.log(`komponen ini telah di muat`);
 
 
-        
+
         const handleResize = () => {
             setWidth(window.innerWidth)
             setHeight(window.innerHeight)
@@ -24,7 +24,7 @@ export default function WindowSize()  {
 
     return (
         <>
-            <div>
+            <div className="border p-4 rounded-lg shadow-md mb-4">
                 <h2 className="text-2xl font-bold mb-4">Window Size( Tugas 3 )</h2>
                 <p>Width: {window.innerWidth}</p>
                 <p>Height: {window.innerHeight}</p>

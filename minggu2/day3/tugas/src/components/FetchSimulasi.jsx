@@ -41,12 +41,14 @@ export default function FetchSimulasi(props) {
 
     return (
         <>
+        <div className="border p-4 rounded-lg shadow-md mb-4">
             <h2 className="text-2xl font-bold mb-4">Fetch Simulasi( Tugas 5 )</h2>
             <div className="max-w-sm mx-auto p-4 rounded-lg grid grid-cols-[auto_auto_1fr] gap-x-2">
                 <p className="font-semibold text-left">ID</p><p>:</p><p className="text-left"> {user.id}</p>
                 <p className="font-semibold text-left">Nama</p><p>:</p><p className="text-left"> {user.name}</p>
                 <p className="font-semibold text-left">City</p><p>:</p><p className="text-left">{user.address.city}</p>
             </div>
+        </div>
 
         </>
     )
