@@ -4,10 +4,10 @@ import 'ldrs/react/Waveform.css'
 
 export default function FetchSimulasi(props) {
     const { userID } = props
-    const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [user, setUser] = useState(null)
     useEffect(() => {
-        setLoading(true)
+        setLoading(true) // Selalu set loading ke true saat effect dimulai
         console.log(`Memulai simulasi fetch untuk userID: ${userID}`);
 
         // Simulasi penundaan fetch data menggunakan setTimeout
@@ -30,6 +30,7 @@ export default function FetchSimulasi(props) {
         return () => clearTimeout(simulationTimer);
 
     }, [userID])
+
 
 
 
