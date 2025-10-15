@@ -26,9 +26,13 @@ const Header = () => {
                         Toggle
                     </button>
                 </div>
+                
+                <div>
+                    <h1 className="font-bold text-2xl">Tugas 3</h1>
+                </div>
 
                 <div>
-                    🔔 Tugas 3 Notification: <strong>{notifikasi}</strong>{" "}
+                    🔔 Notification: <strong>{notifikasi}</strong>{" "}
                     <button className={`${buttonPrimaryBg} ${buttonPrimaryText} ml-2 px-4 py-1 rounded-md font-semibold`} onClick={addNotification}>
                         Add
                     </button>
