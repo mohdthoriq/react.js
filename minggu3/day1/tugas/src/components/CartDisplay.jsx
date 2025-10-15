@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import useCartContext from "../hooks/useCartContext";
+import ThemeContext from "../context/ThemeContext";
 
 const CartDisplay = () => {
   const { cart, removeItem, clearCart, totalPrice } = useCartContext();
+  const { theme } = useContext(ThemeContext);
+
+  const cardBg = theme === '🌞' ? 'bg-[#E5E1DA]' : 'bg-[#40534C]';
+  const cardText = theme === '🌞' ? 'text-[#3A4D39]' : 'text-[#E4E4D0]';
+  const buttonDestructiveBg = theme === '🌞' ? 'bg-red-500 hover:bg-red-600' : 'bg-red-800 hover:bg-red-700';
+  const buttonDestructiveText = 'text-white';
 
   return (
-    <div className="p-4 mt-6 border-t">
+    <div className="p-4 mt-6 border-t border-gray-500">
       <h2 className="text-xl font-semibold mb-3">Shopping Cart</h2>
 
       {cart.length === 0 ? (
@@ -16,7 +23,7 @@ const CartDisplay = () => {
             {cart.map((item) => (
               <li
                 key={item.id}
-                className="flex justify-between items-center border p-2 rounded"
+                className={`${cardBg} ${cardText} flex justify-between items-center p-2 rounded`}
               >
                 <div>
                   <h3 className="font-bold">{item.name}</h3>
@@ -26,7 +33,7 @@ const CartDisplay = () => {
                 </div>
                 <button
                   onClick={() => removeItem(item.id)}
-                  className="bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded"
+                  className={`${buttonDestructiveBg} ${buttonDestructiveText} py-1 px-2 rounded font-semibold`}
                 >
                   Remove
                 </button>
@@ -40,7 +47,7 @@ const CartDisplay = () => {
             </h3>
             <button
               onClick={clearCart}
-              className="bg-gray-600 hover:bg-gray-700 text-white py-1 px-3 rounded"
+              className={`${buttonDestructiveBg} ${buttonDestructiveText} py-1 px-3 rounded font-semibold`}
             >
               Clear Cart
             </button>

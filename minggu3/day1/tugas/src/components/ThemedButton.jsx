@@ -6,8 +6,8 @@ export default function ThemedButton() {
     const { theme, toggleTheme } = useContext(ThemeContext);
 
     const buttonStyle = {
-        backgroundColor: theme === '🌞' ? '#eee' : '#333',
-        color: theme === '🌞' ? '#333' : '#eee',
+        backgroundColor: theme === '🌞' ? '#739072' : '#94A684',
+        color: theme === '🌞' ? '#F1F0E8' : '#1A3636',
         padding: '10px 20px',
         border: 'none',
         borderRadius: '5px',

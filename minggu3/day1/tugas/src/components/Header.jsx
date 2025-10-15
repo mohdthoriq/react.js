@@ -8,31 +8,31 @@ const Header = () => {
     const { notifikasi, addNotification, clearNotification } = useContext(NotifikasiContext)
     const { theme } = useContext(ThemeContext)
 
-    // Perbaikan: Sesuaikan pengecekan tema menjadi "light" atau "dark"
-    const bgColor = theme === '🌞' ? 'bg-white' : 'bg-black'
-    const textColor = theme === '🌞' ? 'text-black' : 'text-white'
-    const bgButtonAdd = theme === "🌞" ? "bg-[#0e1de9ff]" : 'bg-[#f7f30bff]'
-    const textAdd = theme === "🌞" ? "text-[#ffff]" : 'text-[#250]'
+    const bgColor = theme === '🌞' ? 'bg-[#E5E1DA]' : 'bg-[#40534C]';
+    const textColor = theme === '🌞' ? 'text-[#3A4D39]' : 'text-[#E4E4D0]';
+    const buttonPrimaryBg = theme === '🌞' ? 'bg-[#739072]' : 'bg-[#94A684]';
+    const buttonPrimaryText = theme === '🌞' ? 'text-white' : 'text-[#1A3636]';
+    const buttonSecondaryBg = theme === '🌞' ? 'bg-red-400' : 'bg-red-700'
 
 
 
 
     return (
         <>
-            <header className={`${bgColor} ${textColor} p-10 flex justify-between items-center rounded-md shadow-md`}>
+            <header className={`${bgColor} ${textColor} p-4 my-4 flex justify-between items-center rounded-md shadow-md`}>
                 <div>
                     🌍 Language: <strong>{language}</strong>{" "}
-                    <button onClick={changeLanguage} className="border px-4 py-1 rounded-md bg-green-500 text-white" >
+                    <button onClick={changeLanguage} className={`${buttonPrimaryBg} ${buttonPrimaryText} ml-2 px-4 py-1 rounded-md font-semibold`} >
                         Toggle
                     </button>
                 </div>
 
                 <div>
                     🔔 Tugas 3 Notification: <strong>{notifikasi}</strong>{" "}
-                    <button className={`${bgButtonAdd} ${textAdd} px-4 py-1 rounded-md font-bold `} onClick={addNotification}>
+                    <button className={`${buttonPrimaryBg} ${buttonPrimaryText} ml-2 px-4 py-1 rounded-md font-semibold`} onClick={addNotification}>
                         Add
                     </button>
-                    <button onClick={clearNotification}  className="border px-4 py-1 rounded-md bg-red-500 text-black">
+                    <button onClick={clearNotification}  className={`${buttonSecondaryBg} text-white ml-2 px-4 py-1 rounded-md font-semibold`}>
                         🗑️
                     </button>
                 </div>

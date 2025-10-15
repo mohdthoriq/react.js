@@ -7,21 +7,21 @@ const UserDefault = () => {
   const { user, login, logout, Update } = useContext(UserContext);
   const { theme }  = useContext(ThemeContext);
 
-  const bg = theme === "🌞" ? "#eee" : '#333'
-  const bgButtonLog = theme === "🌞" ? "bg-[#0e1de9ff]" : 'bg-[#f7f30bff]'
-  const textLog = theme === "🌞" ? "text-[#ffff]" : 'text-[#250]'
-  const textColor = theme === "🌞" ? "#333" : '#eee'
+  const bg = theme === '🌞' ? '#E5E1DA' : '#40534C';
+  const textColor = theme === '🌞' ? '#3A4D39' : '#E4E4D0';
+  const buttonPrimaryBg = theme === '🌞' ? 'bg-[#739072]' : 'bg-[#94A684]';
+  const buttonPrimaryText = theme === '🌞' ? 'text-white' : 'text-[#1A3636]';
 
 
   return (
-    <div style={{ border: "1px solid gray", padding: "20px", borderRadius: "10px", textAlign: "left", backgroundColor: bg, color: textColor}}>
+    <div style={{ padding: "20px", borderRadius: "10px", marginTop: "20px",textAlign: "left", backgroundColor: bg, color: textColor}}>
       <h2 className="text-2xl font-semibold">Tugas 1</h2>
       <p><b>Name:</b> {user.name}</p>
       <p><b>Email:</b> {user.email || "-"}</p>
       <p><b>Status:</b> {user.isLoggedIn ? "Logged In ✅" : "Guest ❌"}</p>
 
       {!user.isLoggedIn ? (
-        <button className={`${bgButtonLog} ${textLog} order px-4 py-1 mt-4 rounded-md font-bold `} onClick={() => login("Thoriq", "thoriq@email.com")}>
+        <button className={`${buttonPrimaryBg} ${buttonPrimaryText} px-4 py-1 mt-4 rounded-md font-bold`} onClick={() => login("Thoriq", "thoriq@email.com")}>
           Login
         </button>
       ) : (
