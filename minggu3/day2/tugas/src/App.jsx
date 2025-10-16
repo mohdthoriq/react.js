@@ -17,8 +17,8 @@ export default function App() {
   return (
     <div className={`min-h-screen p-4 sm:p-8 transition-colors duration-300 ${theme.bg} ${theme.text}`}>
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-8">React Custom Hooks Showcase</h1>
-        <div className="flex flex-col gap-4">
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">React Custom Hooks Showcase</h1>
+        <div className="flex flex-col gap-6">
           <ThemeSwitcher theme={theme} isDark={isDark} setIsDark={setIsDark} />
           <ToggleDemo theme={theme} />
           <PostCard theme={theme} />

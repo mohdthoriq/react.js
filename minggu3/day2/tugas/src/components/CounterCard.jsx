@@ -5,7 +5,7 @@ const CounterCard = ({ theme }) => {
   const { count, increment, decrement, reset, isVisible, toggleVisibility } = useCounterWithToggle(0)
 
   return (
-    <div className={`p-6 rounded-lg ${theme.bg} ${theme.text} ${theme.border}`}>
+    <div className={`p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ${theme.cardBg} ${theme.text}`}>
       <h3 className="text-xl font-bold mb-4">Tugas 3</h3>
       <button
         onClick={toggleVisibility}

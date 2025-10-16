@@ -9,13 +9,13 @@ const ToggleDemo = ({ theme }) => {
   const bgSwitch = isSwitchOn ? 'bg-green-500' : 'bg-gray-400'
   const knobPosition = isSwitchOn ? 'translate-x-6' : 'translate-x-0'
   return (
-    <div className={`p-6 rounded-lg ${theme.bg} ${theme.text} ${theme.border}`}>
+    <div className={`p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ${theme.cardBg} ${theme.text}`}>
       <h3 className="text-xl font-bold mb-4">Tugas 1</h3>
       <div className="space-y-4">
         <button
           onClick={toggleModal}
           className={`px-4 py-2 rounded font-semibold text-white transition ${
-            isModalOpen ? 'bg-red-500' : 'bg-green-500'
+            isModalOpen ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'
           }`}
         >
           {isModalOpen ? 'Tutup Modal' : 'Buka Modal'}

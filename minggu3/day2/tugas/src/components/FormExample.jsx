@@ -5,7 +5,7 @@ const FormExample = ({ theme }) => {
   const { values, handleChange } = useForm({ name: '', email: '' })
 
   return (
-    <div className={`p-6 rounded-lg ${theme.bg} ${theme.text} ${theme.border}`}>
+    <div className={`p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ${theme.cardBg} ${theme.text}`}>
       <h3 className="text-xl font-bold mb-4">Tugas 4</h3>
       <form className="space-y-3">
         <input
@@ -25,7 +25,7 @@ const FormExample = ({ theme }) => {
           className={`p-2 rounded w-full ${theme.input}`}
         />
       </form>
-      <div className={`mt-4 p-3 rounded ${theme.cardBg}`}>
+      <div className={`mt-4 p-3 rounded bg-opacity-50 ${theme.bg}`}>
         <p>Nama: {values.name}</p>
         <p>Email: {values.email}</p>
       </div>
