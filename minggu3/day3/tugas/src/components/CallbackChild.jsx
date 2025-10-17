@@ -1,18 +1,19 @@
-import { memo } from "react";
+import React from "react";
 
-const CallbackChild = memo(function CallbackChild({ label, onAction }) {
-    console.log('CallbackChild rendered: ', label);
-    return (
-        <>
-            <div className="mt-2 p-3 border border-slate-700 bg-slate-900/50 rounded-lg flex items-center justify-between">
-                <div>
-                    <p className="font-medium text-slate-300">{label}</p>
-                </div>
-                <button onClick={onAction} className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors">Do</button>
-            </div>
-        </>
-    )
+function Child({ onClick }) {
+  console.log("🧒 Child component rendered!");
 
-})
+  return (
+    <div className="mt-4">
+      <button
+        onClick={onClick}
+        className="bg-green-500 px-4 py-2 rounded-lg hover:bg-green-600 text-white font-medium"
+      >
+        Child Button
+      </button>
+    </div>
+  );
+}
 
-export default CallbackChild;
+// 🔥 React.memo biar gak rerender kalo props-nya gak berubah
+export default React.memo(Child);

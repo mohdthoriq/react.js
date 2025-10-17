@@ -1,17 +1,13 @@
-import React from 'react'
+import React from "react";
 
-function Child({ theme }) {
-  console.log('👶 Child rendered')
-
-  const bgButton = theme === '🌞' ? 'bg-yellow-400 text-black' : 'bg-gray-700 text-white'
-
+const Child = ({ name }) => {
+  console.log(`🧩 Child render (${name})`);
   return (
-    <div className={`mt-4 p-4 rounded-lg ${bgButton} transition-colors duration-300`}>
-      <p className="font-semibold">Child Component</p>
-      <p>Current Theme: {theme}</p>
+    <div className="bg-gray-800 p-4 rounded-xl shadow-md text-center">
+      <p className="text-lg font-semibold">Halo {name} 👋</p>
     </div>
-  )
-}
+  );
+};
 
-// 🔥 React.memo mencegah re-render kalau props-nya gak berubah
-export default React.memo(Child)
+// ⛔ Gunakan React.memo agar gak re-render kalau props gak berubah
+export default React.memo(Child);

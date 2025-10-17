@@ -1,64 +1,74 @@
-import { lazy, Suspense, useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { Suspense, lazy, useState } from "react";
+import Navbar from "./components/Navbar";
 import './App.css'
 import Parent from './components/Parent'
-import ExpensiveCalc from './components/ExpensiveCalc'
 import CallbackParent from './components/CallbackParent'
+import Expensive from './components/Expensive'
+import FastComponent from "./components/FastComponent";
+import SlowComponent from "./components/SlowComponent";
+import HeavyList from "./components/HeavyList";
 
-const PageA = lazy(() => import('./pages/PageA'))
-const PageB = lazy(() => import('./pages/PageB'))
-const PageC = lazy(() => import('./pages/PageC'))
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+
+
+
 
 
 export default function App() {
-  const [route, setRoute] = useState('home')
+  const [count, setCount] = useState(0);
+  
+  console.log("App Rendered 🌀");
 
   return (
-    <>
-      <div className="min-h-screen bg-slate-900 text-slate-200 p-6">
-      <header className="max-w-5xl mx-auto mb-8 p-4 bg-slate-800/50 rounded-lg shadow-md border border-slate-700">
-        <h1 className="text-3xl font-bold mb-2">Performance Demo — React.memo / useMemo / useCallback / Lazy</h1>
-        <p className="text-sm text-slate-400">Klik nav buat lazy load pages. Buka console buat log render.</p>
+    <div className="bg-gray-900 text-white min-h-screen w-full p-4 sm:p-8">
+      <div className="max-w-5xl mx-auto flex flex-col gap-8">
+        {/* --- Kartu Tugas 1 & 2 --- */}
+        <section className="bg-gray-800 p-6 rounded-xl shadow-lg border border-slate-700">
+          <Parent />
+          <hr className="my-8 border-slate-600" />
+          <Expensive />
+        </section>
 
-        <nav className="mt-4 flex gap-2">
-          <button onClick={() => setRoute('home')} className="px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded transition-colors">Home</button>
-          <button onClick={() => setRoute('pageA')} className="px-3 py-1 bg-green-500 hover:bg-green-600 text-white rounded transition-colors">Page A (lazy)</button>
-          <button onClick={() => setRoute('pageB')} className="px-3 py-1 bg-indigo-500 hover:bg-indigo-600 text-white rounded transition-colors">Page B (lazy)</button>
-          <button onClick={() => setRoute('pageC')} className="px-3 py-1 bg-purple-500 hover:bg-purple-600 text-white rounded transition-colors">Page C (lazy)</button>
-        </nav>
-      </header>
+        {/* --- Kartu Tugas 3 --- */}
+        <section className="bg-gray-800 p-6 rounded-xl shadow-lg border border-slate-700 flex flex-col items-center">
+          <h1 className="text-2xl font-bold mb-6">Tugas 3 - Optimasi dengan useCallback ⚙️</h1>
+          <CallbackParent />
+        </section>
 
-      <main className="max-w-4xl mx-auto space-y-6">
-        {route === 'home' && (
-          <>
-            <section className="grid md:grid-cols-3 gap-4">
-              <div className="md:col-span-1 flex">
-                <Parent />
-              </div>
+        {/* --- Kartu Tugas 4 --- */}
+        <section className="bg-gray-800 p-6 rounded-xl shadow-lg border border-slate-700 flex flex-col items-center">
+          <h1 className="text-2xl font-bold mb-4">⚙️ Tugas 4 - Code Splitting & Lazy Loading</h1>
+          <Router>
+            <Navbar />
+            <Suspense fallback={<p className="text-yellow-400 mt-6">Loading Page...</p>}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+              </Routes>
+            </Suspense>
+          </Router>
+        </section>
 
-              <div className="md:col-span-1 flex">
-                <ExpensiveCalc />
-              </div>
-
-              <div className="md:col-span-1 flex">
-                <CallbackParent />
-              </div>
-            </section>
-
-            <div className="mt-6 p-4 bg-slate-800 rounded-lg shadow">
-              <p className="text-sm text-slate-400">Notes: open browser console & React DevTools Profiler to watch renders and profiling.</p>
-            </div>
-          </>
-        )}
-
-        {route !== 'home' && (
-          <Suspense fallback={<div className="p-6 bg-slate-800 rounded-lg shadow">Loading page...</div>}>
-            {route === 'pageA' && <PageA />}
-            {route === 'pageB' && <PageB />}
-            {route === 'pageC' && <PageC />}
-          </Suspense>
-        )}
-      </main>
+        {/* --- Kartu Tugas 5 --- */}
+        <section className="bg-gray-800 p-6 rounded-xl shadow-lg border border-slate-700 flex flex-col items-center">
+          <h1 className="text-3xl font-bold mb-4">Tugas 5 - Profil Halaman 🧠 Performance Profiling Demo</h1>
+          <button
+            onClick={() => setCount(count + 1)}
+            className="px-4 py-2 bg-teal-500 rounded-lg hover:bg-teal-600 transition"
+          >
+            Re-render App ({count})
+          </button>
+          <div className="mt-6 flex flex-col sm:flex-row gap-5 w-full max-w-2xl justify-center">
+            <FastComponent />
+            <SlowComponent />
+            <HeavyList />
+          </div>
+        </section>
+      </div>
     </div>
-    </>
   )
 }

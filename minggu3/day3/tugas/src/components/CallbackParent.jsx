@@ -1,42 +1,48 @@
-import { useCallback, useState } from "react";
-import CallbackChild from "./CallbackChild";
+import { useState, useCallback } from "react";
+import Child from "./CallbackChild";
 
-export default function CallbackParent() {
-    const [count, setCount] = useState(0)
-    const [toggle, setToggle] = useState(false)
+export default function Parent() {
+  const [count, setCount] = useState(0);
+  const [dark, setDark] = useState(false);
 
-    console.log('Callback Parent');
+  // ⚡ callback TANPA useCallback (aktifkan ini buat lihat perbedaan)
+  // const handleClick = () => console.log("Clicked Child");
 
-    const handleAction = useCallback(() => {
-        console.log('action from child');
-        setCount(prev => prev + 1)
-    }, [])
+  // ⚡ callback DENGAN useCallback
+  const handleClick = useCallback(() => {
+    console.log("Clicked Child");
+  }, []); // ← fungsi cuma dibuat sekali!
 
-    const handleActionNonMemo = () => {
-        console.log('action from child');
-        setCount(prev => prev + 1)
-    }
+  const themeStyle = {
+    backgroundColor: dark ? "#333" : "#ccc",
+    color: dark ? "white" : "black",
+    padding: "2rem",
+    borderRadius: "10px",
+    width: "300px",
+    transition: "all 0.3s ease-in-out",
+  };
 
-    return (
-        <>
-            <div className="p-6 bg-slate-800 rounded-2xl shadow-lg flex flex-col gap-4 w-full flex-grow border border-slate-700">
-                <h2 className="text-xl font-bold mb-2 text-center text-white">Tugas 3: useCallback</h2>
+  return (
+    <div style={themeStyle} className="text-center">
+      <h2 className="text-lg font-semibold mb-2">
+        Parent Component ({dark ? "Dark" : "Light"} Mode)
+      </h2>
 
-                <div className="flex gap-2">
-                    <button onClick={() => setToggle(t => !t)} className="px-3 py-1 bg-indigo-500 hover:bg-indigo-600 text-white rounded transition-colors">Toggle: {String(toggle)}</button>
-                    <button onClick={() => setCount(c => c + 1)} className="px-3 py-1 bg-green-500 hover:bg-green-600 text-white rounded transition-colors">Parent +1</button>
-                    <div className="ml-auto text-sm text-slate-300">Count: <strong className="text-yellow-400 font-mono">{count}</strong></div>
-                </div>
+      <button
+        onClick={() => setCount((c) => c + 1)}
+        className="bg-teal-500 px-4 py-2 rounded-lg hover:bg-teal-600 text-white font-medium mr-2"
+      >
+        Increment Count ({count})
+      </button>
 
-                <hr className="my-3 border-slate-700" />
+      <button
+        onClick={() => setDark((prev) => !prev)}
+        className="bg-yellow-500 px-4 py-2 rounded-lg hover:bg-yellow-600 text-white font-medium"
+      >
+        Toggle Theme
+      </button>
 
-                <p className="text-xs text-slate-500">Child A gets <code>handleAction</code> memoized via useCallback.</p>
-                <CallbackChild label="A (memoized cb)" onAction={handleAction} />
-
-                <p className="text-xs text-slate-500 mt-3">Child B receives <code>handleActionNonMemo</code> (new function each render).</p>
-                <CallbackChild label="B (non-memo cb)" onAction={handleActionNonMemo} />
-            </div>
-        </>
-    )
-
+      <Child onClick={handleClick} />
+    </div>
+  );
 }

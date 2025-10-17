@@ -1,33 +1,40 @@
-import React, { useState } from 'react'
-import Child from './Child'
+import React, { useState } from "react";
+import Child from "./Child";
 
 export default function Parent() {
-  const [count, setCount] = useState(0)
-  const [theme, setTheme] = useState('🌞')
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState("Thoriq");
 
-  console.log('🧠 Parent rendered')
+  console.log("🔥 Parent render");
 
   return (
-    <div className="p-6 bg-slate-800 rounded-2xl shadow-lg flex flex-col gap-4 w-full text-center flex-grow border border-slate-700">
-      <h1 className="text-xl font-bold mb-2 text-white">Tugas 1: React.memo</h1>
+    <div className="p-8 text-center">
+      <h1 className="text-3xl font-bold mb-4 text-teal-400">
+        Tugas 1 : Menggunakan React.memo ⚡
+      </h1>
 
-      <p className="text-slate-300">Count: <span className="text-yellow-400 font-mono">{count}</span></p>
-      <button
-        onClick={() => setCount(prev => prev + 1)}
-        className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-all"
-      >
-        Increment
-      </button>
+      <div className="flex gap-4 justify-center mb-6">
+        <button
+          onClick={() => setCount(count + 1)}
+          className="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-lg font-semibold"
+        >
+          Tambah Count ({count})
+        </button>
 
-      <p className="text-slate-300">Theme: <span className="text-yellow-400 font-mono text-2xl">{theme}</span></p>
-      <button
-        onClick={() => setTheme(prev => (prev === '🌞' ? '🌙' : '🌞'))}
-        className="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg transition-all"
-      >
-        Toggle Theme
-      </button>
+        <button
+          onClick={() => setName(name === "Thoriq" ? "Rick" : "Thoriq")}
+          className="bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded-lg font-semibold"
+        >
+          Ganti Nama
+        </button>
+      </div>
 
-      <Child theme={theme} />
+      {/* Komponen anak */}
+      <Child name={name} />
+
+      <p className="text-sm mt-6 text-gray-400">
+        Cek di console: Parent re-render tiap klik tombol, tapi Child cuma render saat props berubah 👀
+      </p>
     </div>
-  )
+  );
 }
