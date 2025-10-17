@@ -33,7 +33,7 @@ export default function Expensive() {
         <input
           type="text"
           placeholder="Ketik sesuatu (tidak trigger perhitungan)"
-          className="mt-4 px-3 py-2 rounded-md text-black"
+          className="mt-4 px-3 py-2 rounded-md text-black bg-gray-200 border border-gray-300"
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
