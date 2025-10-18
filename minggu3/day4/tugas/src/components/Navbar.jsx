@@ -4,6 +4,7 @@ import { ThemeContext } from "../context/ThemeContext";
 
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { theme, toggleTheme } = useContext(ThemeContext); // Ambil konteks di sini
     const menuRef = useRef(null);
     const buttonRef = useRef(null);
 
@@ -99,7 +100,11 @@ export default function Navbar() {
                             <NavLink to="/dashboard/settings" onClick={closeMobileMenu}>Pengaturan</NavLink>
                         </li>
                         <li className="mobile-theme-toggle">
-                           <ThemeToggleButton />
+                           <span>Ganti Tema</span>
+                           <label className="switch">
+                                <input type="checkbox" onChange={toggleTheme} checked={theme === 'dark'} />
+                                <span className="slider round"></span>
+                           </label>
                         </li>
                     </ul>
                 </div>
@@ -112,8 +117,9 @@ function ThemeToggleButton() {
     const { theme, toggleTheme } = useContext(ThemeContext);
  
     return (
-        <button onClick={toggleTheme} className="theme-toggle-button">
-            {theme === 'light' ? '🌙' : '🌞'}
-        </button>
+        <label className="switch" aria-label="Ganti tema">
+            <input type="checkbox" onChange={toggleTheme} checked={theme === 'dark'} />
+            <span className="slider round"></span>
+        </label>
     );
 }
