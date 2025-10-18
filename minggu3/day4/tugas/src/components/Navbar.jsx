@@ -99,7 +99,7 @@ export default function Navbar() {
                             <NavLink to="/dashboard/settings" onClick={closeMobileMenu}>Pengaturan</NavLink>
                         </li>
                         <li className="mobile-theme-toggle">
-                           <button><ThemeToggleButton /></button>
+                           <ThemeToggleButton />
                         </li>
                     </ul>
                 </div>
