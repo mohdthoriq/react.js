@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+.active-link {
+  font-weight: bold;
+  color: blue;
+  text-decoration: underline;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+nav li a {
+  text-decoration: none;
+  color: black;
+}
