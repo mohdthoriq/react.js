@@ -13,14 +13,17 @@ export default function PrivateRoute({ children }) {
     }
 
     if (!isAuthenticated) {
-        return <StatusPage
-            title="Anda Belum Login"
-            message="Silakan login untuk melanjutkan atau kembali ke beranda."
-            actionLink={`/login?from=${location.pathname}`}
-            actionText="Login"
-            type="error"
-            showCloseButton={true}
-        />
+        return (
+            <div className="centered-status">
+                <StatusPage
+                    title="Anda Belum Login"
+                    message="Silakan login untuk melanjutkan atau kembali ke beranda."
+                    actionLink={`/login?from=${location.pathname}`}
+                    actionText="Login"
+                    type="error"
+                    showCloseButton={true} />
+            </div>
+        );
     }
 
     return children

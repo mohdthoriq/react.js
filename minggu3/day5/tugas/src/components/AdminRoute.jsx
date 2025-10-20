@@ -13,12 +13,20 @@ export default function AdminRoute({ children }) {
 
     // Jika tidak terautentikasi, arahkan ke halaman login
     if (!isAuthenticated) {
-        return <StatusPage title="Anda Belum Login" message="Silakan login untuk melanjutkan." actionLink={`/login?from=${location.pathname}`} actionText="Login" type="error" showCloseButton={true} />;
+        return (
+            <div className="centered-status">
+                <StatusPage title="Anda Belum Login" message="Silakan login untuk melanjutkan." actionLink={`/login?from=${location.pathname}`} actionText="Login" type="error" showCloseButton={true} />
+            </div>
+        );
     }
 
     // Jika terautentikasi tetapi bukan admin, tampilkan halaman akses ditolak
     if (user.role !== 'admin') {
-        return <StatusPage title="Akses Ditolak" message="Halaman ini hanya dapat diakses oleh Administrator." actionLink="/" actionText="Kembali ke Beranda" type="error" />;
+        return (
+            <div className="centered-status">
+                <StatusPage title="Akses Ditolak" message="Halaman ini hanya dapat diakses oleh Administrator." actionLink="/" actionText="Kembali ke Beranda" type="error" />
+            </div>
+        );
     }
 
     // Jika admin, tampilkan konten

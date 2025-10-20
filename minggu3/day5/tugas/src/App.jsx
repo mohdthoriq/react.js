@@ -21,7 +21,7 @@ function App() {
 
   return (
     <>
-      <div>
+      <div style={{ minHeight: '100vh' }}>
         {/* Tugas 2 */}
         <Navbar />
         {/* Tugas 1 */}
