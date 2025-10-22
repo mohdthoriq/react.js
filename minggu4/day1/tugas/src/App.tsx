@@ -1,6 +1,5 @@
 import './App.css'
 import { CardDemo } from './components/CardDemo'
-import { ModeToggle } from './components/ModeToggle'
 import { ThemeProvider } from './components/ThemeProvider'
 import { Navbar} from './components/Navbar'
 
