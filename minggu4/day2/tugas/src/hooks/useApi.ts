@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { isApiError } from '../utils/typeGuard';
 
 
 type ApiStatus = 'idle' | 'loading' | 'success' | 'error';
@@ -18,13 +19,18 @@ export const useApi = <T,>(url: string) => {
                 setData(json)
                 setStatus('success')
             } catch (err) {
-                setError((err as Error). message)
-                setStatus('error')
+                if (isApiError(err)) {
+                    console.error('API Error:', err.message);
+                    setError(err.message);
+                } else {
+                    console.error('Network or unknown error:', err);
+                    setError('Something went wrong');
+                }
             }
         }
 
         fetchData()
-    },[url])
+    }, [url])
 
     return { data, error, status }
 
